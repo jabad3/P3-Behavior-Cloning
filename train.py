@@ -185,6 +185,151 @@ data_frame = None
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##################################################
+##################################################
+##################################################
+##################################################
+##################################################
+# load data file
+data_frame = pd.read_csv('left_recovery/driving_log.csv', usecols=[0, 1, 2, 3])
+
+# shuffle the data
+data_frame = data_frame.sample(frac=1).reset_index(drop=True)
+
+x_images = []
+y_labels = []
+for index, row in data_frame.iterrows():
+    HARD_CONSTANT = 0.50
+    SOFT_CONSTANT = 0.25
+    
+    
+    left_image_path = row['left']
+    center_image_path = row['center']
+    right_image_path = row['right']
+    center_steering_value = row['steering']
+    
+    left_image = load_image_values("left_recovery/" + left_image_path.strip())
+    center_image = load_image_values("left_recovery/" + center_image_path.strip())
+    right_image = load_image_values("left_recovery/" + right_image_path.strip())
+    
+    # add images
+    x_images.append(left_image)
+    y_labels.append(center_steering_value+HARD_CONSTANT)
+    
+    x_images.append(center_image)
+    y_labels.append(center_steering_value)
+    
+    x_images.append(right_image)
+    y_labels.append(center_steering_value+SOFT_CONSTANT)
+
+    # mini augment
+    left_flipped_image = cv2.flip(left_image, 1)
+    center_flipped_image = cv2.flip(center_image, 1)
+    right_flipped_image = cv2.flip(right_image, 1)
+    center_flipped_steering_value = center_steering_value*-1
+    
+    x_images.append(left_flipped_image)
+    y_labels.append(center_flipped_steering_value-SOFT_CONSTANT)
+    
+    x_images.append(center_flipped_image)
+    y_labels.append(center_flipped_steering_value)
+    
+    x_images.append(right_flipped_image)
+    y_labels.append(center_flipped_steering_value-HARD_CONSTANT)
+
+    
+# release the main data_frame from memory
+data_frame = None
+##################################################
+##################################################
+##################################################
+##################################################
+##################################################
+##################################################
+##################################################
+# load data file
+data_frame = pd.read_csv('right_recovery/driving_log.csv', usecols=[0, 1, 2, 3])
+
+# shuffle the data
+data_frame = data_frame.sample(frac=1).reset_index(drop=True)
+
+x_images = []
+y_labels = []
+for index, row in data_frame.iterrows():
+    SOFT_CONSTANT = 0.25
+    HARD_CONSTANT = 0.50
+    
+    left_image_path = row['left']
+    center_image_path = row['center']
+    right_image_path = row['right']
+    center_steering_value = row['steering']
+    
+    left_image = load_image_values("right_recovery/" + left_image_path.strip())
+    center_image = load_image_values("right_recovery/" + center_image_path.strip())
+    right_image = load_image_values("right_recovery/" + right_image_path.strip())
+    
+    # add images
+    x_images.append(left_image)
+    y_labels.append(center_steering_value-SOFT_CONSTANT)
+    
+    x_images.append(center_image)
+    y_labels.append(center_steering_value)
+    
+    x_images.append(right_image)
+    y_labels.append(center_steering_value-HARD_CONSTANT)
+
+    # mini augment
+    left_flipped_image = cv2.flip(left_image, 1)
+    center_flipped_image = cv2.flip(center_image, 1)
+    right_flipped_image = cv2.flip(right_image, 1)
+    center_flipped_steering_value = center_steering_value*-1
+    
+    x_images.append(left_flipped_image)
+    y_labels.append(center_flipped_steering_value+HARD_CONSTANT)
+    
+    x_images.append(center_flipped_image)
+    y_labels.append(center_flipped_steering_value)
+    
+    x_images.append(right_flipped_image)
+    y_labels.append(center_flipped_steering_value+SOFT_CONSTANT)
+
+    
+# release the main data_frame from memory
+data_frame = None
+##################################################
+##################################################
+##################################################
+##################################################
+##################################################
+##################################################
+##################################################
+
+
+
+
+
+
+
+
+
+
 x_images = np.asarray(x_images)
 y_labels = np.asarray(y_labels)
 

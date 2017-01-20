@@ -138,7 +138,7 @@ for index, row in data_frame.iterrows():
     center_steering_value = row['steering']
     
     #left_image = load_image_values("curves/" + left_image_path.strip())
-    center_image = load_image_values("curves/" + center_image_path.strip())
+    center_image = load_image_values("edge_recovery/" + center_image_path.strip())
     #right_image = load_image_values("curves/" + right_image_path.strip())
     
     # add images

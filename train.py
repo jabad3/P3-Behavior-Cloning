@@ -329,7 +329,7 @@ print(len(x_images), len(y_labels))
 model = get_model()
 #model.fit(training_generator, validation_data=validation_data_generator, samples_per_epoch=samples_per_epoch, nb_epoch=3, nb_val_samples=3000)
 #model.fit(x_train_data, Y_train_data, batch_size=128, nb_epoch=2, validation_split=0.2)
-model.fit(x_images, y_labels, batch_size=128, nb_epoch=6, validation_split=0.2)
+model.fit(x_images, y_labels, batch_size=128, nb_epoch=10, validation_split=0.2)
 
 print("Saving model.")
 model.save_weights('model.h5')

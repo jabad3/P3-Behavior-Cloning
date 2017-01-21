@@ -14,7 +14,7 @@ data_frame = data_frame.sample(frac=1).reset_index(drop=True)
 x_images = []
 y_labels = []
 for index, row in data_frame.iterrows():
-    LEFT_RIGHT_CORRECTION_CONSTANT = 0.30
+    LEFT_RIGHT_CORRECTION_CONSTANT = 0.20
     
     left_image_path = row['left']
     center_image_path = row['center']

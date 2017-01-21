@@ -266,8 +266,8 @@ for index, row in data_frame.iterrows():
     center_steering_value = row['steering']
     
     #left_image = load_image_values("data/" + left_image_path.strip())
-    center_image = load_image_values("data/" + center_image_path.strip())
-    right_image = load_image_values("data/" + right_image_path.strip())
+    center_image = load_image_values("the_tricky_turn/" + center_image_path.strip())
+    right_image = load_image_values("the_tricky_turn/" + right_image_path.strip())
     
     # add images
     #x_images.append(left_image)

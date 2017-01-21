@@ -70,43 +70,22 @@ print(data_frame)
 
 x_images = []
 y_labels = []
-for index, row in data_frame.iterrows():
-    #LEFT_RIGHT_CORRECTION_CONSTANT = 0.20
-    
-    #left_image_path = row['left']
+for index, row in data_frame.iterrows():    
     center_image_path = row['center']
-    #right_image_path = row['right']
     center_steering_value = row['steering']
     
-    #left_image = load_image_values("curves/" + left_image_path.strip())
     center_image = load_image_values("curves/" + center_image_path.strip())
-    #right_image = load_image_values("curves/" + right_image_path.strip())
     
     # add images
-    #x_images.append(left_image)
-    #y_labels.append(center_steering_value+LEFT_RIGHT_CORRECTION_CONSTANT)
-    
     x_images.append(center_image)
     y_labels.append(center_steering_value)
-    
-    #x_images.append(right_image)
-    #y_labels.append(center_steering_value-LEFT_RIGHT_CORRECTION_CONSTANT)
 
     # mini augment
-    #left_flipped_image = cv2.flip(left_image, 1)
     center_flipped_image = cv2.flip(center_image, 1)
-    #right_flipped_image = cv2.flip(right_image, 1)
     center_flipped_steering_value = center_steering_value*-1
-    
-    #x_images.append(left_flipped_image)
-    #y_labels.append(center_flipped_steering_value+LEFT_RIGHT_CORRECTION_CONSTANT)
     
     x_images.append(center_flipped_image)
     y_labels.append(center_flipped_steering_value)
-    
-    #x_images.append(right_flipped_image)
-    #y_labels.append(center_flipped_steering_value-LEFT_RIGHT_CORRECTION_CONSTANT)
-
     
 # release the main data_frame from memory
 data_frame = None
@@ -129,43 +108,21 @@ print(data_frame)
 
 x_images = []
 y_labels = []
-for index, row in data_frame.iterrows():
-    #LEFT_RIGHT_CORRECTION_CONSTANT = 0.20
-    
-    #left_image_path = row['left']
+for index, row in data_frame.iterrows(): 
     center_image_path = row['center']
-    #right_image_path = row['right']
     center_steering_value = row['steering']
-    
-    #left_image = load_image_values("curves/" + left_image_path.strip())
     center_image = load_image_values("edge_recovery/" + center_image_path.strip())
-    #right_image = load_image_values("curves/" + right_image_path.strip())
     
     # add images
-    #x_images.append(left_image)
-    #y_labels.append(center_steering_value+LEFT_RIGHT_CORRECTION_CONSTANT)
-    
     x_images.append(center_image)
     y_labels.append(center_steering_value)
-    
-    #x_images.append(right_image)
-    #y_labels.append(center_steering_value-LEFT_RIGHT_CORRECTION_CONSTANT)
 
     # mini augment
-    #left_flipped_image = cv2.flip(left_image, 1)
     center_flipped_image = cv2.flip(center_image, 1)
-    #right_flipped_image = cv2.flip(right_image, 1)
     center_flipped_steering_value = center_steering_value*-1
-    
-    #x_images.append(left_flipped_image)
-    #y_labels.append(center_flipped_steering_value+LEFT_RIGHT_CORRECTION_CONSTANT)
     
     x_images.append(center_flipped_image)
     y_labels.append(center_flipped_steering_value)
-    
-    #x_images.append(right_flipped_image)
-    #y_labels.append(center_flipped_steering_value-LEFT_RIGHT_CORRECTION_CONSTANT)
-
     
 # release the main data_frame from memory
 data_frame = None
@@ -199,7 +156,8 @@ data_frame = None
 
 
 
-
+HARD_CONSTANT = 0.35
+SOFT_CONSTANT = 0.25
 
 
 ##################################################
@@ -216,9 +174,6 @@ data_frame = data_frame.sample(frac=1).reset_index(drop=True)
 x_images = []
 y_labels = []
 for index, row in data_frame.iterrows():
-    HARD_CONSTANT = 0.50
-    SOFT_CONSTANT = 0.25
-    
     
     left_image_path = row['left']
     center_image_path = row['center']
@@ -273,8 +228,6 @@ data_frame = data_frame.sample(frac=1).reset_index(drop=True)
 x_images = []
 y_labels = []
 for index, row in data_frame.iterrows():
-    SOFT_CONSTANT = 0.25
-    HARD_CONSTANT = 0.50
     
     left_image_path = row['left']
     center_image_path = row['center']

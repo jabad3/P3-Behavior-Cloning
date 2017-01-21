@@ -257,17 +257,17 @@ data_frame = pd.read_csv('the_tricky_turn/driving_log.csv', usecols=[0, 1, 2, 3]
 data_frame = data_frame.sample(frac=1).reset_index(drop=True)
 for index, row in data_frame.iterrows():
     
-    HARD = 0.10
-    BOOSTER = 0.05
+    #HARD = 0.10
+    #BOOSTER = 0.05
     
     #left_image_path = row['left']
     center_image_path = row['center']
-    right_image_path = row['right']
+    #right_image_path = row['right']
     center_steering_value = row['steering']
     
     #left_image = load_image_values("data/" + left_image_path.strip())
     center_image = load_image_values("the_tricky_turn/" + center_image_path.strip())
-    right_image = load_image_values("the_tricky_turn/" + right_image_path.strip())
+    #right_image = load_image_values("the_tricky_turn/" + right_image_path.strip())
     
     # add images
     #x_images.append(left_image)
@@ -276,11 +276,11 @@ for index, row in data_frame.iterrows():
     x_images.append(center_image)
     y_labels.append(center_steering_value)
     
-    x_images.append(center_image)
-    y_labels.append(center_steering_value-BOOSTER)
+    #x_images.append(center_image)
+    #y_labels.append(center_steering_value-BOOSTER)
     
-    x_images.append(right_image)
-    y_labels.append(center_steering_value-HARD)
+    #x_images.append(right_image)
+    #y_labels.append(center_steering_value-HARD)
 
     # mini augment
     #left_flipped_image = cv2.flip(left_image, 1)
@@ -294,8 +294,8 @@ for index, row in data_frame.iterrows():
     x_images.append(center_flipped_image)
     y_labels.append(center_flipped_steering_value)
     
-    x_images.append(center_flipped_image)
-    y_labels.append(center_flipped_steering_value+BOOSTER)
+    #x_images.append(center_flipped_image)
+    #y_labels.append(center_flipped_steering_value+BOOSTER)
     
     #x_images.append(right_flipped_image)
     #y_labels.append(center_flipped_steering_value-SOFT)

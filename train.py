@@ -66,10 +66,10 @@ data_frame = pd.read_csv('curves_do_not_add_weights/driving_log.csv', usecols=[0
 
 # shuffle the data
 data_frame = data_frame.sample(frac=1).reset_index(drop=True)
-print(data_frame)
+#print(data_frame)
 
-x_images = []
-y_labels = []
+#x_images = []
+#y_labels = []
 for index, row in data_frame.iterrows():    
     center_image_path = row['center']
     center_steering_value = row['steering']
@@ -106,8 +106,8 @@ data_frame = pd.read_csv('new_left_recovery_do_not_add_weights/driving_log.csv',
 data_frame = data_frame.sample(frac=1).reset_index(drop=True)
 #print(data_frame)
 
-x_images = []
-y_labels = []
+#x_images = []
+#y_labels = []
 for index, row in data_frame.iterrows(): 
     center_image_path = row['center']
     center_steering_value = row['steering']
@@ -140,8 +140,8 @@ data_frame = pd.read_csv('new_right_recovery_do_not_add_weights/driving_log.csv'
 data_frame = data_frame.sample(frac=1).reset_index(drop=True)
 #print(data_frame)
 
-x_images = []
-y_labels = []
+#x_images = []
+#y_labels = []
 for index, row in data_frame.iterrows(): 
     center_image_path = row['center']
     center_steering_value = row['steering']
@@ -215,8 +215,8 @@ data_frame = pd.read_csv('right_drift_control_experimental/driving_log.csv', use
 data_frame = data_frame.sample(frac=1).reset_index(drop=True)
 #print(data_frame)
 
-x_images = []
-y_labels = []
+#x_images = []
+#y_labels = []
 for index, row in data_frame.iterrows(): 
     center_image_path = row['center']
     center_steering_value = row['steering']
@@ -248,10 +248,14 @@ data_frame = None
 x_images = np.asarray(x_images)
 y_labels = np.asarray(y_labels)
 
+
+print(len(x_images), len(y_labels))
+
+
 model = get_model()
 #model.fit(training_generator, validation_data=validation_data_generator, samples_per_epoch=samples_per_epoch, nb_epoch=3, nb_val_samples=3000)
 #model.fit(x_train_data, Y_train_data, batch_size=128, nb_epoch=2, validation_split=0.2)
-model.fit(x_images, y_labels, batch_size=128, nb_epoch=60, validation_split=0.2)
+model.fit(x_images, y_labels, batch_size=128, nb_epoch=30, validation_split=0.2)
 
 print("Saving model.")
 model.save_weights('model.h5')

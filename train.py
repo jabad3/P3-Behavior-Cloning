@@ -209,32 +209,32 @@ data_frame = None
 ##################################################
 ####
 # load error data
-data_frame = pd.read_csv('right_drift_control_experimental/driving_log.csv', usecols=[0, 1, 2, 3])
-
-# shuffle the data
-data_frame = data_frame.sample(frac=1).reset_index(drop=True)
-#print(data_frame)
-
-#x_images = []
-#y_labels = []
-for index, row in data_frame.iterrows(): 
-    center_image_path = row['center']
-    center_steering_value = row['steering']
-    center_image = load_image_values("right_drift_control_experimental/" + center_image_path.strip())
-    
-    # add images
-    x_images.append(center_image)
-    y_labels.append(center_steering_value)
-
-    # mini augment
-    center_flipped_image = cv2.flip(center_image, 1)
-    center_flipped_steering_value = center_steering_value*-1
-    
-    x_images.append(center_flipped_image)
-    y_labels.append(center_flipped_steering_value)
-    
-# release the main data_frame from memory
-data_frame = None
+#data_frame = pd.read_csv('right_drift_control_experimental/driving_log.csv', usecols=[0, 1, 2, 3])
+#
+## shuffle the data
+#data_frame = data_frame.sample(frac=1).reset_index(drop=True)
+##print(data_frame)
+#
+##x_images = []
+##y_labels = []
+#for index, row in data_frame.iterrows(): 
+#    center_image_path = row['center']
+#    center_steering_value = row['steering']
+#    center_image = load_image_values("right_drift_control_experimental/" + center_image_path.strip())
+#    
+#    # add images
+#    x_images.append(center_image)
+#    y_labels.append(center_steering_value)
+#
+#    # mini augment
+#    center_flipped_image = cv2.flip(center_image, 1)
+#    center_flipped_steering_value = center_steering_value*-1
+#    
+#    x_images.append(center_flipped_image)
+#    y_labels.append(center_flipped_steering_value)
+#    
+## release the main data_frame from memory
+#data_frame = None
 
 
 

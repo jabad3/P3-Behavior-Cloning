@@ -292,8 +292,8 @@ for index, row in data_frame.iterrows():
     #x_images.append(left_flipped_image)
     #y_labels.append(center_flipped_steering_value+HARD)
     
-    x_images.append(center_flipped_image)
-    y_labels.append(center_flipped_steering_value)
+    ##x_images.append(center_flipped_image)
+    ##y_labels.append(center_flipped_steering_value)
     
     #x_images.append(center_flipped_image)
     #y_labels.append(center_flipped_steering_value+BOOSTER)
@@ -350,8 +350,8 @@ for index, row in data_frame.iterrows():
     #x_images.append(left_flipped_image)
     #y_labels.append(center_flipped_steering_value+HARD)
     
-    x_images.append(center_flipped_image)
-    y_labels.append(center_flipped_steering_value)
+    ##x_images.append(center_flipped_image)
+    ##y_labels.append(center_flipped_steering_value)
     
     #x_images.append(center_flipped_image)
     #y_labels.append(center_flipped_steering_value+BOOSTER)

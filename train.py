@@ -256,6 +256,7 @@ data_frame = pd.read_csv('the_tricky_turn/driving_log.csv', usecols=[0, 1, 2, 3]
 # shuffle the data
 data_frame = data_frame.sample(frac=1).reset_index(drop=True)
 for index, row in data_frame.iterrows():
+    scale = 0.7
     
     #HARD = 0.10
     #BOOSTER = 0.05
@@ -264,6 +265,7 @@ for index, row in data_frame.iterrows():
     center_image_path = row['center']
     #right_image_path = row['right']
     center_steering_value = row['steering']
+    center_steering_value = center_steering_value * scale
     
     #left_image = load_image_values("data/" + left_image_path.strip())
     center_image = load_image_values("the_tricky_turn/" + center_image_path.strip())

@@ -326,8 +326,8 @@ for index, row in data_frame.iterrows():
     right_image = load_image_values("the_tricky_turn2/" + right_image_path.strip())
     
     # add images
-    x_images.append(left_image*0.8)
-    y_labels.append(center_steering_value-SOFT)
+    x_images.append(left_image)
+    y_labels.append(center_steering_value*0.8)
     
     x_images.append(center_image)
     y_labels.append(center_steering_value)
@@ -335,8 +335,8 @@ for index, row in data_frame.iterrows():
     #x_images.append(center_image)
     #y_labels.append(center_steering_value-BOOSTER)
     
-    x_images.append(right_image*1.2)
-    y_labels.append(center_steering_value-HARD)
+    x_images.append(right_image)
+    y_labels.append(center_steering_value*1.2)
 
     # mini augment
     #left_flipped_image = cv2.flip(left_image, 1)

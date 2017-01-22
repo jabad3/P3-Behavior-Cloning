@@ -260,9 +260,9 @@ for index, row in data_frame.iterrows():
     #HARD = 0.10
     #BOOSTER = 0.05
     
-    left_image_path = row['left']
+    #left_image_path = row['left']
     center_image_path = row['center']
-    right_image_path = row['right']
+    #right_image_path = row['right']
     center_steering_value = row['steering']
     center_steering_value = center_steering_value * scale
     
@@ -271,14 +271,14 @@ for index, row in data_frame.iterrows():
     right_image = load_image_values("the_tricky_turn/" + right_image_path.strip())
     
     # add images
-    x_images.append(left_image)
-    y_labels.append(center_steering_value*0.8)
+    #x_images.append(left_image)
+    #y_labels.append(center_steering_value*0.8)
     
     x_images.append(center_image)
     y_labels.append(center_steering_value)
     
-    x_images.append(right_image)
-    y_labels.append(center_steering_value*1.2)
+    #x_images.append(right_image)
+    #y_labels.append(center_steering_value*1.2)
 
     # mini augment
     #left_flipped_image = cv2.flip(left_image, 1)
@@ -315,9 +315,9 @@ for index, row in data_frame.iterrows():
     #HARD = 0.10
     #BOOSTER = 0.05
     
-    left_image_path = row['left']
+    #left_image_path = row['left']
     center_image_path = row['center']
-    right_image_path = row['right']
+    #right_image_path = row['right']
     center_steering_value = row['steering']
     center_steering_value = center_steering_value * scale
     
@@ -326,8 +326,8 @@ for index, row in data_frame.iterrows():
     right_image = load_image_values("the_tricky_turn2/" + right_image_path.strip())
     
     # add images
-    x_images.append(left_image)
-    y_labels.append(center_steering_value*0.8)
+    #x_images.append(left_image)
+    #y_labels.append(center_steering_value*0.8)
     
     x_images.append(center_image)
     y_labels.append(center_steering_value)
@@ -335,8 +335,8 @@ for index, row in data_frame.iterrows():
     #x_images.append(center_image)
     #y_labels.append(center_steering_value-BOOSTER)
     
-    x_images.append(right_image)
-    y_labels.append(center_steering_value*1.2)
+    #x_images.append(right_image)
+    #y_labels.append(center_steering_value*1.2)
 
     # mini augment
     #left_flipped_image = cv2.flip(left_image, 1)

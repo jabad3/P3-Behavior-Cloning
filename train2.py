@@ -318,6 +318,55 @@ data_frame = None
 
 
 
+########
+########
+########
+########
+########
+########
+###load hypothesis data
+data_frame = pd.read_csv('my_hypothesis/driving_log.csv', usecols=[0, 1, 2, 3])
+
+# shuffle the data
+data_frame = data_frame.sample(frac=1).reset_index(drop=True)
+#print(data_frame)
+
+#x_images = []
+#y_labels = []
+for index, row in data_frame.iterrows(): 
+    left_image_path = row['left']
+    center_image_path = row['center']
+    right_image_path = row['right']
+    center_steering_value = row['steering']
+    left_image = load_image_values("my_hypothesis/" + left_image_path.strip())
+    center_image = load_image_values("my_hypothesis/" + center_image_path.strip())
+    right_image = load_image_values("my_hypothesis/" + right_image_path.strip())
+    
+    # add images
+    x_images.append(left_image)
+    y_labels.append(center_steering_value+LEFT_RIGHT_CORRECTION_CONSTANT)
+    
+    x_images.append(center_image)
+    y_labels.append(center_steering_value)
+    
+    x_images.append(right_image)
+    y_labels.append(center_steering_value-LEFT_RIGHT_CORRECTION_CONSTANT)
+
+    # mini augment
+    center_flipped_image = cv2.flip(center_image, 1)
+    center_flipped_steering_value = center_steering_value*-1
+    
+    x_images.append(center_flipped_image)
+    y_labels.append(center_flipped_steering_value)
+    
+# release the main data_frame from memory
+data_frame = None
+
+
+
+
+
+
 
 
 

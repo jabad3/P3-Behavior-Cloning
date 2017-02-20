@@ -92,10 +92,14 @@ Fifth Layer: Fully connected layer with 1024 perceptrons. Another dropout layer 
 
 ####3. Creation of the Training Set & Training Process
 To capture good driving behavior, I first recorded two laps on track one using center lane driving. Here is an example image of center lane driving:
+
 ![alt text][centerLaneDriving]
 
+
 I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to  correct its trajectory if it made a mistake. This image shows an example of a slow recovery when the car got too close to the left hand side of the lane:
+
 ![alt text][errorControl]
+
 
 To augment the data sat, I also flipped images and angles. This serves two purposes, it easily creates new data to train on, and second, it helps to reduce bias for the curves.
 

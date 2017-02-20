@@ -1,10 +1,8 @@
 from keras.models import Sequential
-from keras.layers import Convolution2D, ELU, Flatten, Dropout, Dense, Lambda, MaxPooling2D
+from keras.layers import Convolution2D, ELU, Dropout, MaxPooling2D, Flatten, Dense
 
-
-def get_model():
+def create_model():
     model = Sequential()
-    # model.add(Lambda(preprocess_batch, input_shape=(160, 320, 3), output_shape=(64, 64, 3)))
 
     # layer 1 output shape is 32x32x32
     model.add(Convolution2D(32, 5, 5, input_shape=(64, 64, 3), subsample=(2, 2), border_mode="same"))
@@ -21,7 +19,7 @@ def get_model():
     model.add(ELU())
     model.add(Dropout(.4))
 
-    # Flatten the output
+    # flatten the output
     model.add(Flatten())
 
     # layer 4
@@ -33,9 +31,8 @@ def get_model():
     model.add(Dense(512))
     model.add(ELU())
 
-    # Finally a single output, since this is a regression problem
+    # final output
     model.add(Dense(1))
 
     model.compile(optimizer="adam", loss="mse")
-
     return model

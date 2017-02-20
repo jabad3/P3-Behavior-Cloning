@@ -15,7 +15,7 @@ from io import BytesIO
 from keras.models import model_from_json
 from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array
 
-from utility import preprocess_image
+from utility import preprocess
 
 # Fix error with Keras and TensorFlow
 import tensorflow as tf

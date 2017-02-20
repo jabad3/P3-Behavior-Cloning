@@ -83,10 +83,15 @@ At the end of the process, the vehicle is able to drive autonomously around the 
 
 ####2. Final Model Architecture
 The final model architecture (model.py lines 7-37) consisted of a convolution neural network with the following layers and layer sizes:
+
 First Layer: Convolution layer with 32 5x5 filters. This layer ends with an ELU activation.
+
 Second Layer: Convolution layer with 16 3x3 filters. This layer also has an ELU activation, dropout of 40%, and a max pool layer.
+
 Third Layer: Convolution layer with 16 3x3 filters. This layer has an ELU activation and a dropout set to 40% as well.
+
 Fourth Layer: Fully connected layer with 1024 perceptrons. A dropout layer is set to 30%, and an ELU activation is at the end.
+
 Fifth Layer: Fully connected layer with 1024 perceptrons. Another dropout layer set to 30%, and an ELU activation.
 
 
